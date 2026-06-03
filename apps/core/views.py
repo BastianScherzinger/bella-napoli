@@ -259,3 +259,9 @@ def error_404(request, exception=None):
 
 def error_500(request):
     return render(request, 'errors/500.html', status=500)
+
+
+def health(request):
+    """Railway Health Check — muss immer 200 zurückgeben."""
+    from django.http import JsonResponse
+    return JsonResponse({"status": "ok", "service": "online"})
